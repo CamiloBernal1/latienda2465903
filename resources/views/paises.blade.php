@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
 
     <title> Paises </title>
 
@@ -26,6 +27,7 @@
       <th> Capital </th>
       <th> Moneda</th>
       <th>Población</th>
+      <th>Ciudades</th>
   </tr>
 
   </thead>
@@ -35,24 +37,35 @@
   @foreach($paises as $pais => $infopais)
 
   <tr>
-      <td>
+      <td class="text-warning" rowspan='{{ count($infopais["ciudades"]) }}'>
+
           {{  $pais  }}
+
       </td>
 
-      <td> 
+      <td class="text-muted" rowspan='{{ count($infopais["ciudades"]) }}'> 
 
       {{ $infopais["capital"] }}
 
       </td>
 
-      <td>
+      <td class="text-info" rowspan='{{ count($infopais["ciudades"]) }}'>
           {{ $infopais["moneda"] }}
       </td>
 
-      <td>
-          {{ $infopais["población"]}}
+      <td style="background-color: #AED6F1;" rowspan='{{ count($infopais["ciudades"]) }}'>
+          {{ $infopais["población"]}} millones hab.
       </td>
-  </tr>
+
+      @foreach($infopais["ciudades"] as $ciudad)
+
+      <th>
+      {{ $ciudad }}
+      </th>
+
+</tr>
+
+      @endforeach
 
   @endforeach
 

@@ -101,17 +101,25 @@ Route::get('paises' , function(){
 
         "capital" => "Buenos Aires", 
         "moneda" => "Peso Argentino", 
-        "población" => 45, 
+        "población" => 45,
+        "ciudades" => [
+
+            "Buenos Aires"
+        ]
     ],
 
     "Ecuador" => [
 
         "capital" => "Quito", 
         "moneda" => "Dólar", 
-        "población" => 17
+        "población" => 17,
+        "ciudades" => [
 
+            "Quito"
+        ]
 
     ]
+
     ]; 
 
 // Mostrar la vista 
