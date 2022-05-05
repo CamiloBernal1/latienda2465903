@@ -53,13 +53,13 @@
           {{ $infopais["moneda"] }}
       </td>
 
-      <td style="background-color: #AED6F1;" rowspan='{{ count($infopais["ciudades"]) }}'>
+      <td class="texto-green" rowspan='{{ count($infopais["ciudades"]) }}'>
           {{ $infopais["población"]}} millones hab.
       </td>
 
       @foreach($infopais["ciudades"] as $ciudad)
 
-      <th>
+      <th style="background-color: #AED6F1;">
       {{ $ciudad }}
       </th>
 
