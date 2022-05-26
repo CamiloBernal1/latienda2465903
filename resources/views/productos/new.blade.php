@@ -1,6 +1,11 @@
 @extends('layouts.menu')
 
 @section('contenido')
+@if(session('mensajito'))
+<div class="row">
+    <span>{{session('mensajito')}}</span>
+</div>
+@endif
 
 <div class="row">
 
@@ -10,7 +15,11 @@
 
 <div class="row">
 
-    <form class="col s8">
+    <form method="POST"
+          action="{{ route('productos.store') }}"
+          class="col s8">
+          @csrf
+
         <div class="row">
             <div class="input-field cols8">
 
@@ -18,45 +27,57 @@
             type="text"
             placeholder="Nombre de producto"
             id="nombre"
-            name="nombre" />
+            name="nombre"
+            value="{{ old('nombre') }}" />
 
             <label for="nombre"> Nombre </label>
+            <span> {{ $errors->first('nombre') }}</span>
 
             </div>
         </div>
 
         <div class="row">
-
             <div class="input-field col s8">
 
-                <textarea 
-                name="desc" 
-                id="desc" 
-                class="materialize-textarea" >
-                </textarea>
+            <textarea 
+            name="desc" 
+            id="desc" 
+            class="materialize-textarea" >
+            {{ old('desc') }}
+            </textarea>
 
-                <label for="desc"> Descripcion </label>
+            <label for="desc"> Descripcion </label>
+            <span> {{ $errors->first('desc') }}</span>
+
             </div>
-
         </div>
 
         <div class="row">
             <div class="input field col s8">
-                <input 
-                type="text"
-                nombre="precio"
-                id="precio" />
 
-                <label for="precio"> Precio </label>
+            <label for="precio"> Precio </label>
+
+            <input 
+            type="text"
+            name="precio"
+            id="precio"
+            value = "{{ old('precio')}}">
+
+            <span> {{ $errors->first('precio') }}</span>
+
             </div>
         </div>
-          <div class="row">
+
+        <div class="row">
             <div class="input-field col s8">
-             <select id="marca">
 
-             @foreach($marcas as $marca)
+            <select name="marca" id="marca">
 
-            <option value="">
+            <option value="">Elige marca</option>
+
+            @foreach($marcas as $marca)
+
+            <option value="{{ $marca->id }}">
                    
                {{ $marca->nombre }}
             
@@ -66,11 +87,40 @@
 
             </select>
 
-            <label for="marca">
-            Elija marca
-            </label>
+            <label for="marca">Elija marca</label>
+
+            <span> {{ $errors->first('marca') }}</span>
 
           </div>
+        </div>
+        <div>
+        
+        <div class="row">
+            <div class="input-field col s8">
+            
+            <select name="categoria" id="categoria">
+
+            <option value="">Elige categoria</option>
+
+             @foreach($categorias as $categoria)
+
+            <option value="{{ $categoria->id }}">
+                   
+               {{ $categoria->nombre }}
+            
+            </option>
+
+               @endforeach
+
+            </select>
+
+            <label for="categoria"> Elija la categoria </label>
+
+            <span> {{ $errors->first('categoria') }}</span>
+
+          </div>
+
+        </div>
         </div>
         <div class="row">
             <div class="file-field input-field col s8">
