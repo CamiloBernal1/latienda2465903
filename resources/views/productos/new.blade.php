@@ -1,9 +1,9 @@
 @extends('layouts.menu')
-
 @section('contenido')
 @if(session('mensajito'))
+
 <div class="row">
-    <span>{{session('mensajito')}}</span>
+    <span class="#64b5f6 blue lighten-2">{{session('mensajito')}}</span>
 </div>
 @endif
 
