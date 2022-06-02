@@ -54,7 +54,8 @@ class ProductoController extends Controller
          "desc" => 'required|min:20|max:50', 
          "precio" => 'required|numeric',
          "marca" => 'required',
-         "categoria" => 'required'
+         "categoria" => 'required',
+         "imagen" => 'required|image'
 
     ]; 
 
@@ -64,7 +65,8 @@ class ProductoController extends Controller
         "required" => "Campo obligatorio", 
         "alpha" => "Solo letras",
         "min" => "Se permiten 20 caracteres como minimo",
-        "numeric" => "Solo numeros"
+        "numeric" => "Solo numeros",
+        "imge" => "Solo imagenes"
     ]; 
 
     //2. Crear el objeto validador
@@ -85,6 +87,20 @@ class ProductoController extends Controller
 
     }else{
 
+    //Accder a propiedades del archivo cargado
+
+    $archivo = $r->imagen;
+    $nombre_archivo = $archivo->getClientOriginalName(); 
+
+    //Establecer la ubicacion donde se almacena el archivo
+    
+    $ruta=public_path()."/img/";
+    
+    //Mover el archivo
+
+    $archivo->move($ruta,
+                    $nombre_archivo);
+
     //Validacion correcta
 
     //Crear nuevo producto 
@@ -94,14 +110,15 @@ class ProductoController extends Controller
     //Asignar valores a los atributos del objeto
 
     $p-> nombre = $r-> nombre; 
-    $p-> desc = $r-> desc;
+    $p-> desc = $r-> desc; 
     $p-> precio = $r-> precio;
     $p-> marca_id = $r-> marca; 
     $p-> categoria_id = $r-> categoria;
+    $p-> imagen = $nombre_archivo;
 
     //Guardar en db
 
-     $p->save();
+    $p->save();
 
     // Redireccionar al formulario con mensaje de exito(session)
     return redirect('productos/create')

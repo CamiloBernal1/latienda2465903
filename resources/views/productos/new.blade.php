@@ -17,7 +17,8 @@
 
     <form method="POST"
           action="{{ route('productos.store') }}"
-          class="col s8">
+          class="col s8"
+          enctype="multipart/form-data">
           @csrf
 
         <div class="row">
@@ -119,7 +120,6 @@
             <span> {{ $errors->first('categoria') }}</span>
 
           </div>
-
         </div>
         </div>
         <div class="row">
@@ -136,9 +136,9 @@
 
                 <input type="text" class="file-path">
                 </div>
+                <span>{{ $errors->first('imagen')  }} </span>
             </div>
         </div>
-
         <div class="row">
         <button class="btn waves-effect waves-light" type="submit"> Guardar
   </button>
