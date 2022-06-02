@@ -32,7 +32,7 @@
             value="{{ old('nombre') }}" />
 
             <label for="nombre"> Nombre </label>
-            <span> {{ $errors->first('nombre') }}</span>
+            <span class="#f48fb1 pink lighten-3"> {{ $errors->first('nombre') }}</span>
 
             </div>
         </div>
@@ -48,7 +48,7 @@
             </textarea>
 
             <label for="desc"> Descripcion </label>
-            <span> {{ $errors->first('desc') }}</span>
+            <span class="#ce93d8 purple lighten-3"> {{ $errors->first('desc') }}</span>
 
             </div>
         </div>
@@ -64,7 +64,7 @@
             id="precio"
             value = "{{ old('precio')}}">
 
-            <span> {{ $errors->first('precio') }}</span>
+            <span class="#b39ddb deep-purple lighten-3"> {{ $errors->first('precio') }}</span>
 
             </div>
         </div>
@@ -90,7 +90,7 @@
 
             <label for="marca">Elija marca</label>
 
-            <span> {{ $errors->first('marca') }}</span>
+            <span class="#64b5f6 blue lighten-2"> {{ $errors->first('marca') }}</span>
 
           </div>
         </div>
@@ -117,7 +117,7 @@
 
             <label for="categoria"> Elija la categoria </label>
 
-            <span> {{ $errors->first('categoria') }}</span>
+            <span class="#aed581 light-green lighten-2"> {{ $errors->first('categoria') }}</span>
 
           </div>
         </div>
@@ -136,7 +136,7 @@
 
                 <input type="text" class="file-path">
                 </div>
-                <span>{{ $errors->first('imagen')  }} </span>
+                <span class="#e57373 red lighten-2">{{ $errors->first('imagen')  }} </span>
             </div>
         </div>
         <div class="row">
