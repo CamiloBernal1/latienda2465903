@@ -8,7 +8,7 @@
 
 <div class="card">
     <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" width="500" height="570" 
+      <img class="activator" width="350" height="600" 
       @if($producto->imagen === null)
         src="{{asset('img/no_disponible.jpg') }}"
       @else
@@ -18,13 +18,13 @@
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">{{ $producto->nombre }}<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">Ver detalles</a></p>
+      <p><a href="{{ url('productos/'.$producto->id)}}">Ver detalles</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">{{ $producto->nombre }}<i class="material-icons right">close</i></span>
       <ul>
           <li>
-              Descripción: {{$producto->desc }}
+              Descripción: {{$producto->desc}}
           </li>
           <br>
           <li>
@@ -32,7 +32,11 @@
           </li>
           <br>
           <li>
-              Categoria: {{$producto->categoria()->get()->nombre}}
+              Categoria: {{$producto->categoria->nombre}}
+          </li>
+          <br>
+          <li>
+              Marca: {{$producto->marca->nombre}}
           </li>
       </ul>
     </div>
